@@ -1,4 +1,4 @@
-//a function that iterates through the server
+//here we are writing a function that iterates through the server
 const setUpEvents=()=>{
     const form = document.querySelector("#github-form")
     form.addEventListener("submit",function(e){
@@ -17,10 +17,10 @@ const setUpEvents=()=>{
        .then ((data)=>{
         
     
-    //------grab elements using querySelector---
+    //we grab elements using the querySelector
     let userList = document.querySelector("#user-list");
     let repoList= document.querySelector("#repos-list");   
-       //----creating element to store data----
+       //we are creating elements to store data
     let userName = document.createElement('div')
     let avatar = document.createElement('div')
     let link = document.createElement('div')
@@ -28,7 +28,7 @@ const setUpEvents=()=>{
     
     
     
-    //-----Appending lists in respective places----
+    //we are appending lists 
     userList.appendChild(userName)
     userList.appendChild(avatar)
     userList.appendChild(link)
@@ -36,15 +36,18 @@ const setUpEvents=()=>{
     
     
     
-    //-----string interpolating values----
+    //here we are interpolating string values
     userName.innerHTML=`<a href="https://www.github.com${githubNames}"></a>`
     avatar.innerHTML=`<img  src="${data.avatar_url}"/>`   
-     link.innerHTML=`<p href="https://www.github.com/${data.url}" ></p>`
-    repos.innerHTML=`<a href="https://www.github.com/${data.public_repos}" ></a>`
+     link.innerHTML=`${data.url}`
+    repos.innerHTML=`${data.public_repos}`
     console.log(data)
        
     })
        
     })}
-    
+
+window.onload = function (){
+    setUpEvents();
+}
     
